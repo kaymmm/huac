@@ -1,7 +1,19 @@
 <?php
 require 'vendor/autoload.php';
 
+// include the guzzler library
 use GuzzleHttp\Client;
+
+// NOTE: You don't need to use the guzzler library! I just included it since Daria was asking about an alternative to curl last week.
+
+// In order for the script to run, you need to install composer and guzzler:
+// 0. install composer if you haven't already: https://getcomposer.org/doc/00-intro.md
+// 0a. "curl -sS https://getcomposer.org/installer | php"
+// 1. in a terminal window, cd to the directory containing this git repository
+// 2. "php composer.phar install"
+// 3. test the script using a minimal php server:
+// 3a. "php -S 127.0.0.1:8080"
+// 3b. open a browser to http://127.0.0.1:8080/dcloud_search.php
 
 // declare variables for sanity
 $search_terms = $witness_type = $query = '';
