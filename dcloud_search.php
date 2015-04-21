@@ -100,6 +100,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <em>Query items: </em><?php print_r($q); ?><br>
         <em>Search options: </em><?php print_r($options); ?><br>
         <h1>Results:</h1>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Thumbnail</th>
+                <th>Title</th>
+                <th>Text</th>
+            </tr>
+        <?php foreach($json['documents'] as $id => $doc) { ?>
+            <tr>
+                <td>
+                    <?php echo $id+1; ?>
+                </td>
+                <td><img src="<?php echo $doc['resources']['thumbnail']; ?>" style="width:30px;"></td>
+                <td>
+                    <?php echo $doc['title']; ?>
+                </td>
+                <?php if (!empty($doc['mentions'])) {?>
+                    <td>
+                    <?php echo $doc['mentions'][0]['text']; ?>
+                    </td>
+                <?php } ?>
+            </tr>
+        <?php } ?>
+            </table>
+    </div>
+    <div>
+        <h2>Raw output:</h2>
         <pre><?php print_r($json); ?></pre>
     </div>
 <?php } ?>
